@@ -33,7 +33,8 @@ export default class BookSearch extends Component {
       book.shelf = 'none'
     }
 
-    //Will iterate into search result object and saved books object and update the same state on both search page and main application page
+    //Will iterate into search result object and saved books object and update 
+    //the same state on both search page and main application page
     for (let book of books) {
       for (let b of allBooks) {
         if (book.title === b.title) {
@@ -45,12 +46,12 @@ export default class BookSearch extends Component {
     return books
   }
 
-  //Method the filters through books with imageLinks and authors
+  //Method that filters through books with imageLinks and authors
   filterBooks = (books) => {
     return books.filter((book) => (book.imageLinks)).filter((book) => (book.authors));
   }
 
-  //Calls on the onchange function and alerts the user that book has been added
+  //Method that alerts the user that a book has been added
   bookRefresh = (b, shelf) => {
     this.props.onChange(b, shelf);
 
@@ -67,7 +68,7 @@ export default class BookSearch extends Component {
 
   }
 
-  //Method that handles the search API
+  //Method that handles the search from API
   handleSearch = (query) => {
     if (query.length > 0) {
       api.search(query)
@@ -87,6 +88,8 @@ export default class BookSearch extends Component {
   }
 
   render() {
+    const { books, query } = this.state
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -94,17 +97,28 @@ export default class BookSearch extends Component {
             close
             </Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" onChange={(event) => this.updateQuery(event.target.value)} />
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              onChange={(event) => this.updateQuery(event.target.value)}
+            />
           </div>
         </div>
 
-        {this.state.books.length > 0 && (
+        {books.length > 0 && (
           <div>
-            <p className="now-showing"> Now showing {this.state.books.length} book results. </p>
+            <p className="now-showing"> Now showing {books.length} book results. </p>
             <div className="search-books-results">
               <ol className="books-grid">
-                {this.state.query.length !== 0 && this.state.books.map((b) => (
-                  <BookCategory book={b} key={b.id} title={b.title} author={b.authors} image={b.imageLinks.smallThumbnail} onShelfChange={(shelf) => { this.bookRefresh(b, shelf) }} />
+                {query.length !== 0 && books.map((book) => (
+                  <BookCategory
+                    book={book}
+                    key={book.id}
+                    title={book.title}
+                    author={book.authors}
+                    image={book.imageLinks.smallThumbnail}
+                    onShelfChange={(shelf) => { this.bookRefresh(book, shelf) }}
+                  />
                 ))}
               </ol>
             </div>

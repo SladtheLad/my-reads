@@ -14,8 +14,8 @@ export default class SavedBooks extends Component {
 
     return (
       <div className="list-books">
-        <div className="jumbotron">
-          <h1 className="jumbotron-text">My Library</h1>
+        <div>
+          <h1 className="main-header">My Library</h1>
         </div>
         <BookShelf
           title="Currently Reading"

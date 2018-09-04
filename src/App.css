@@ -6,6 +6,7 @@ body,
 
 body {
   line-height: 1.5;
+  font-style: italic;
 }
 
 body,
@@ -14,6 +15,14 @@ body,
 }
 
 /* main page */
+
+.main-header {
+  text-align: center;
+  background-color: #c19cab;
+  margin: 0 0 20px 0;
+  padding: 20px;
+}
+
 .list-books-title {
   padding: 10px 0;
   background: #2e7c31;
@@ -21,7 +30,6 @@ body,
 }
 
 .list-books-title h1 {
-  font-weight: 400;
   margin: 0;
   color: white;
 }
@@ -42,7 +50,7 @@ body,
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  border-bottom: 1px solid #e4d4ca;
 }
 
 .bookshelf-books {
@@ -69,6 +77,35 @@ body,
   font-size: 0;
 }
 
+.add-button {
+  position: fixed;
+  right: 0;
+  bottom: 30px;
+  width: 70px;
+  height: 70px;
+  margin: 20px;
+  border-radius: 50%;
+  border-color: #c8a9a6;
+  background: #b7a8bc;
+  background-image: url('./icons/add.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.add-button:hover {
+  background: #ce703f;
+  background-image: url('./icons/add.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 40px;
+}
+
+.add-button:focus {
+  outline: none;
+}
+
 /* search page */
 .search-books-bar {
   position: fixed;
@@ -82,15 +119,14 @@ body,
 
 .search-books-input-wrapper {
   flex: 1;
-  background: #e9e;
 }
 
 .search-books-bar input {
   width: 100%;
   padding: 15px 10px;
-  font-size: 1.25em;
   border: none;
   outline: none;
+  font: inherit;
 }
 
 .close-search {
@@ -157,7 +193,7 @@ body,
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #645770;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
