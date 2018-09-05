@@ -21,7 +21,6 @@ export default class BookSearch extends Component {
     this.setState(() => ({
       query: query.trim()
     }))
-    console.log(query)
     this.handleSearch(query)
   }
 
@@ -76,7 +75,6 @@ export default class BookSearch extends Component {
           if (books.length > 0) {
             books = this.filterBooks(books);
             books = this.searchShelfChange(books);
-            console.log(books);
             this.setState(() => {
               return { books: books }
             })
